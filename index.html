@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- CONFIG -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Mario Browser">
+    <link rel="apple-touch-icon" href="icon.png">
+    <title>Mario Browser</title>
+    <!-- STYLE -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="icon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- SCRIPTS -->
+    <script src="./js/gameloop.js" defer></script>
+    <!-- SOUNDS -->
+    <audio id="music" src="sounds/music.mp3" autoplay loop></audio>
+    <audio id="jumpSound" src="sounds/jump.mp3"></audio>
+    <audio id="coinColectSound" src="sounds/coin-colect.mp3"></audio>
+    <audio id="gameOverSound" src="sounds/gameover.mp3"></audio>
+    <audio id="yoshiCoinColectSound" src="sounds/yoshi-coin-colect.mp3"></audio>
+    <audio id="montYoshi" src="sounds/mount-yoshi.mp3"></audio>
+</head>
+
+<body>
+    <!-- GAMEBOARD -->
+    <div class="game-board" id="game-board">
+        <div class="scoreboard-row">
+            <div class="score-box-l">
+                <!-- SCORE -->
+                <div class="score">
+                    <span class="scoreGB">Score: 0</span>
+                </div>
+                <!-- COINS -->
+                <div class="coins">
+                    <span class="coinGB">Coins: 0</span>
+                </div>
+                <div class="Ycoin" id="Ycoin">
+                    <span class="YcoinGB">
+                        <img src="/imagens/iconyoshi.png">
+                    </span>
+                </div>
+            </div>
+            <div class="score-box-r">
+                <!-- PAUSE BUTTON -->
+                <div class="btn">
+                    <button class="pauseButton" id="pauseButton" onclick="">
+                        <i class='bx bx-pause-circle' style='color:#870213'></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="colum">
+            <!-- MENU INICIAL -->
+            <div id="start-screen">
+                <img src="./imagens/title-menu.png">
+                <button id="start-button">Iniciar</button>
+            </div>
+            <!-- GAME OVER DISPLAY -->
+            <div id="gameover-screen">   
+                
+                <img src="./imagens/title-menu.png">
+                <div class="scoreGO">
+                    <span class="scoreGO">Score: 0</span>
+                </div>
+                <button id="restart-button">Tentar<br>de<br>Novo!</button>
+            </div>
+            <!-- CONFIG MENU -->
+            <div id="config-screen">
+                <div class="configContainer" id="configContainer">
+                    <div class="configBox">
+                        <div class="topBox">
+                            <div class="topBox1">
+                                <div class="topBoxIcon"><i class='bx bx-edit-alt'></i></div>
+                                <div><h1>AJUSTES</h1></div>
+                            </div>
+                            <div class="topBox2">
+                                <button id="xButton">X</button>
+                            </div>
+                        </div>
+                        <div id="cfgMain">
+                            <div class="cfgMainBox">
+                                <div id="cfgMain">  
+                                    <div class="cfgColum">
+                                        <div class="menuColum">
+                                            <div class="actionMenu" id="action-one">
+                                                <button id="aMcontroles"><h2>Controles</h2></button>
+                                            </div>
+                                            <div class="actionMenu">
+                                                <button id="aMsom"><h2>Som</h2></button>
+                                            </div>
+                                        </div>
+                                        <button class="okButton" id="okButtonM" onclick="">OK!</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="cfgControls">
+                            <div class="controlsBox">
+                                <div class="controls">
+                                    <h2>Controles</h2>
+                                    <div class="controls-row">
+                                        <div class="controls-colum">
+                                            <div class="action" id="action-one">
+                                                <h2>Pular</h2>
+                                            </div>
+                                            <div class="key">
+                                                <h2>Space</h2>
+                                            </div>
+                                        </div>
+                                        <div class="controls-colum">
+                                            <div class="action" id="action-one">
+                                                <h2>Yoshi</h2>
+                                            </div>
+                                            <div class="key">
+                                                <h2>N</h2>
+                                            </div>
+                                        </div>
+                                    </div>                                                                                                                                        
+                                </div>                              
+                            </div>
+                            <button class="okButton" id="okButtonC" onclick="">OK!</button>
+                        </div>
+                        <div class="cfgSounds" id="cfgSounds">
+                            <div class="soundBox">
+                                <div class="musicBox">
+                                    <div class="musicVolume">
+                                        <h2>Musica</h2>
+                                        <div class="volume-row">
+                                            <div class="volume-row1">
+                                                <i class='bx bxs-volume-full' ></i>
+                                            </div>
+                                            <div class="barraMusic" id="barraMusic">
+                                                <div class="progresso1" id="progresso1"></div>
+                                                <div class="cursorMusic" id="cursorMusic"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fxBox">
+                                    <div class="fxVolume">
+                                        <h2>Efeitos</h2>
+                                        <div class="fx-row">
+                                            <div class="fx-row1">
+                                                <i class='bx bxs-volume-full' ></i>
+                                            </div>
+                                            <div class="barraFx" id="barraFx">
+                                                <div class="progresso2" id="progresso2"></div>
+                                                <div class="cursorFx" id="cursorFx"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="okButton" id="okButtonS" onclick="">OK!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- IMG -->
+        <img src="./imagens/clouds.png" class="clouds">
+        <img src="./imagens/mario.gif" class="mario">
+        <img src="./imagens/pipe.png" class="pipe">
+        <img src="./imagens/coin.png" class="coin">
+        <img src="./imagens/yoshicoin.png" class="yoshicoin">
+        <img src="./imagens/yoshisolo.png" class="yoshi">
+        <!-- ROOF -->
+        <div class="game-boardroof">
+            <img src="./imagens/roof.png" class="roof">
+        </div>
+    </div>
+    <div class="controls-screen">
+        <div class="tecla">M</div>
+        <div class="tecla-fuction">:Mute</div>
+        <div class="space"></div>
+        <div class="tecla">Space</div>
+        <div class="tecla-fuction">:Jump</div>
+        <div class="space"></div>
+        <div class="tecla">N</div>
+        <div class="tecla-fuction">:Yoshi Mode</div>
+    </div>
+</body>
+
+</html>
