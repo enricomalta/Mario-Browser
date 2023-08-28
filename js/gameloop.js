@@ -135,13 +135,13 @@ function montYoshi() {                                                          
 }
 function mainMusic() {
     var music = document.getElementById("music");                               //
-    music.src = "../sounds/music.mp3";                                          //
+    music.src = "./sounds/music.mp3";                                          //
     music.load();
     music.play()
 }
 function yoshiMusic() {                                                         // Sound Effect Yoshi Music
     var music = document.getElementById("music");                               //
-    music.src = "../sounds/music2.mp3";                                         //
+    music.src = "./sounds/music2.mp3";                                         //
     music.addEventListener("loadedmetadata", function () {
         music.play();
     });
@@ -266,7 +266,7 @@ function ativarInvulnerabilidade() {                                            
 function modoMario() {
     montYoshi();                                                                                            // Sound Effect Desmontar do Yoshi
     isYoshi = false;                                                                                        // MODO YOSHI DESATIVADO
-    mario.src = '../imagens/mario.gif';                                                                     // MARIO IMG PADRÃO
+    mario.src = './imagens/mario.gif';                                                                     // MARIO IMG PADRÃO
     mario.style.width = '150px';                                                                            // MARIO IMG PADRÃO REAJUSTE 
     mario.style.left = '0px';                                                                               // MARIO IMG PADRÃO REAJUSTE LEFT
     yoshicoin.style.display = 'block';                                                                      // LIBERA YOSHI COIN SPAWN
@@ -285,7 +285,7 @@ function modoMario() {
 }
 function modoYoshi() {
     isYoshi = true;                            // MODO YOSHI ATIVADO
-    mario.src = '../imagens/marioyoshi.gif';   // MARIO YOSHI IMG
+    mario.src = './imagens/marioyoshi.gif';   // MARIO YOSHI IMG
     mario.style.width = '190px';               // REAJUSTE MARIO YOSHI
     mario.style.left = '-20px';                // REAJUSTE LEFT MARIO YOSHI
     YcoinElement.style.visibility = "hidden";  // OCULTA ICONE MOEDA YOSHI 
@@ -428,7 +428,7 @@ if (isMenu) {
     pipe.style.display = 'none';                                        // Oculta Cano
     coin.style.display = 'none';                                        // Oculta Coin
     yoshicoin.style.display = 'none';                                   // Oculta Yoshi Coin
-    mario.src = '../imagens/marioAFK.png';                              // Mario Parado
+    mario.src = './imagens/marioAFK.png';                              // Mario Parado
     mario.style.width = '112px';                                        // Mario Parado Redicionamento
     mario.style.left = '35px';                                          // Mario Parado Correção Left
     pausePipeAnimation();                                               // Pausa Animação
@@ -451,7 +451,7 @@ startButton.addEventListener("click", () => {                           // Event
     pipe.style.display = '';                                            // Ativa Cano
     coin.style.display = '';                                            // Ativa Coin
     yoshicoin.style.display = '';                                       // Ativa Yoshi Coin
-    mario.src = '../imagens/mario.gif';                                 // Mario Play
+    mario.src = './imagens/mario.gif';                                 // Mario Play
     mario.style.width = '150px';                                        // Mario Play Redicionamento
     mario.style.left = '0px';                                           // Mario Play Correção Left
     YcoinElement.style.visibility = "hidden";                           // Oculta Icone Yoshi Coin
@@ -473,7 +473,7 @@ function restartGame() {                            // Reseta Game
     count2 = 0;                                     // Zera Yoshi Coin
     updateScore();                                  // Atualiza Score 
     updateCoin();                                   // Atualiza Coins
-    mario.src = '../imagens/mario.gif';             // Mario Game Over Reset Personagem
+    mario.src = './imagens/mario.gif';             // Mario Game Over Reset Personagem
     mario.style.width = '150px';                    // Mario Game Over Reset Tamanho
     mario.style.left = '0px';                       // Mario Game Over Reset Posição Esquerda
     mario.style.animation = '';                     // Reseta Animação Mario
@@ -521,9 +521,9 @@ pauseButton.addEventListener("click", () => {
             restartCoinsAnimation();                                         //
             restartYoshiAnimation();
             if (isYoshi) { // Se o jogo estiver no Modo Yoshi
-                mario.src = '../imagens/marioyoshi.gif';    // Troque para a imagem do Mario com Yoshi quando estiver no modo Yoshi
+                mario.src = './imagens/marioyoshi.gif';    // Troque para a imagem do Mario com Yoshi quando estiver no modo Yoshi
             } else {
-                mario.src = '../imagens/mario.gif';         // Troque para a imagem do Mario em pausa
+                mario.src = './imagens/mario.gif';         // Troque para a imagem do Mario em pausa
                 mario.style.width = '150px';
                 mario.style.left = '0px';
             }
@@ -536,9 +536,9 @@ pauseButton.addEventListener("click", () => {
             isPaused = true;                                // Jogo em pausa
             clearInterval(loop);                            // Interrompe o loop do jogo
             if (isYoshi) {
-                mario.src = '../imagens/marioyoshiAFK.png'; // Troque para a imagem do Mario com Yoshi quando estiver no modo Yoshi
+                mario.src = './imagens/marioyoshiAFK.png'; // Troque para a imagem do Mario com Yoshi quando estiver no modo Yoshi
             } else {
-                mario.src = '../imagens/marioAFK.png';      // Troque para a imagem do Mario em pausa
+                mario.src = './imagens/marioAFK.png';      // Troque para a imagem do Mario em pausa
                 mario.style.width = '112px';                // Reajust Width
                 mario.style.left = '35px';                  // Reajust Left
             }
@@ -687,7 +687,7 @@ const gameLoop = () => {
                 pipe.style.left = `${pipePosition}px`;
                 mario.style.animation = 'none';
                 mario.style.left = `${marioPosition}px`;
-                mario.src = '../imagens/gameover.png';
+                mario.src = './imagens/gameover.png';
                 mario.style.animation = 'dead 500ms ease-out forwards';
                 mario.style.width = '75px';
                 mario.style.left = '54px';
